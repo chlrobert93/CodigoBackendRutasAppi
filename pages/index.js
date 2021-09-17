@@ -5,11 +5,14 @@ function HomePage() {
   const feedbackInputRef = useRef();
 
   //Controlador para el encio del formulario
-  function submitFormHandler(event){
+  function submitFormHandler(event) {
     event.preventDefault();
 
     const enteredEmail = emailInputRef.current.value;
     const enteredFeedback = feedbackInputRef.current.value;
+
+    //Eviar solicitud que lleva un curpo de un objecto JS
+    fetch(); //{ email: 'test@test.com', text: 'Some feedback text' }
   }
 
   return (
