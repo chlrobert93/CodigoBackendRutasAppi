@@ -1,6 +1,9 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 function HomePage() {
+  //Registrar estado
+  const [feedbackItems, setFeedbackItems] = useState([]);
+
   const emailInputRef = useRef();
   const feedbackInputRef = useRef();
 
@@ -34,6 +37,20 @@ function HomePage() {
 /*       .then(response => response.text())
       .then(text => console.log(text))
        */
+
+  }
+  
+  function loadFeebackHandler() {
+    fetch('/api/feedback')
+    .then((response) => response.json())
+    .then((data) => {
+
+
+    /*Establecer mi estado  cada vez que buscamos datos
+      para actulizar ese estado de comentarios
+    */
+   setFeedbackItems(data.feedback)
+    });
   }
 
   return (
@@ -50,6 +67,11 @@ function HomePage() {
         </div>
         <button>Send Feedback</button>
       </form>
+      <hr/>
+      <button onClick={loadFeebackHandler}>Load feedback</button>
+      <ul>
+        {feedbackItems.map(item => <li key={item.id}>{item.text}</li>)}
+      </ul>
     </div>
   );
 }
