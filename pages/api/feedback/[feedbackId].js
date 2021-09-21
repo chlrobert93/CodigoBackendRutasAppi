@@ -1,4 +1,4 @@
-import { buildFeedbackPath, extractFeedback } from './feedback';
+import { buildFeedbackPath, extractFeedback } from '../feedback';
 //Para saber que valor concreto se codificó en la URL req, res
 function handler(req, res) {
     //Recuperar los datos para un comentario específico
